@@ -1,0 +1,507 @@
+import { Category, Product, StoreSettings } from '../types';
+
+export const DEFAULT_CATEGORIES: Category[] = [
+  {
+    id: 'ai',
+    nameAr: 'الذكاء الاصطناعي (AI)',
+    nameFr: 'Intelligence Artificielle',
+    icon: 'Sparkles',
+    descriptionAr: 'اشتراكات رسمية في أقوى نماذج الذكاء الاصطناعي لتسريع عملك وإنتاجيتك',
+    descriptionFr: 'Abonnements officiels aux meilleurs modèles IA pour booster votre productivité'
+  },
+  {
+    id: 'design',
+    nameAr: 'التصميم والإبداع',
+    nameFr: 'Design & Créativité',
+    icon: 'Palette',
+    descriptionAr: 'أدوات المحترفين في الجرافيك والتصميم الرقمي بأفضل الأسعار في تونس',
+    descriptionFr: 'Outils professionnels de graphisme et création digitale au meilleur prix'
+  },
+  {
+    id: 'video',
+    nameAr: 'المونتاج وصناعة الفيديو',
+    nameFr: 'Montage & Vidéo',
+    icon: 'Video',
+    descriptionAr: 'برامج المونتاج الاحترافية للموبايل والحاسوب لصناع المحتوى',
+    descriptionFr: 'Logiciels professionnels de montage vidéo pour créateurs de contenu'
+  },
+  {
+    id: 'entertainment',
+    nameAr: 'الترفيه والبث المباشر',
+    nameFr: 'Divertissement & Streaming',
+    icon: 'Tv',
+    descriptionAr: 'شاهد أحدث الأفلام والمسلسلات بجودة 4K فائقة مع حسابات مضمونة',
+    descriptionFr: 'Films, séries et live streaming en 4K Ultra HD avec garantie'
+  },
+  {
+    id: 'music',
+    nameAr: 'الموسيقى والصوتيات',
+    nameFr: 'Musique & Audio',
+    icon: 'Headphones',
+    descriptionAr: 'استمع بدون إعلانات وبأعلى جودة صوت مع إمكانية التحميل للموبايل',
+    descriptionFr: 'Écoute sans publicité en haute qualité avec téléchargement hors ligne'
+  },
+  {
+    id: 'productivity',
+    nameAr: 'الإنتاجية والأعمال',
+    nameFr: 'Productivité & Bureau',
+    icon: 'Briefcase',
+    descriptionAr: 'حلول ذكية لإدارة المشاريع ومساحات العمل السحابية الاحترافية',
+    descriptionFr: 'Solutions intelligentes pour la gestion de projets et bureaux collaboratifs'
+  }
+];
+
+export const DEFAULT_PRODUCTS: Product[] = [
+  {
+    id: 'prod-chatgpt',
+    slug: 'chatgpt-plus',
+    name: 'ChatGPT Plus',
+    categoryId: 'ai',
+    shortDescAr: 'الوصول المتقدم لنموذج GPT-4o والتحليل المتقدم وتوليد الصور DALL-E 3',
+    shortDescFr: 'Accès privilégié à GPT-4o, Canvas, analyse de code et DALL-E 3',
+    fullDescAr: 'اشتراك رسمي في ChatGPT Plus من OpenAI يمنحك سرعة فائقة في الإجابة، وصولاً غير محدود لنموذج GPT-4o الأحدث، تصفح الإنترنت الحي، قراءة المستندات والملفات وتحليل البيانات المعقدة، بالإضافة لتوليد الصور فائقة الدقة.',
+    fullDescFr: 'Abonnement officiel à ChatGPT Plus par OpenAI. Profitez d\'un accès prioritaire à GPT-4o, la génération d\'images DALL-E 3, l\'analyse de documents et données complexes, ainsi que la navigation web en temps réel.',
+    brandColor: '#10A37F',
+    iconName: 'Bot',
+    logoUrl: '/assets/aistudio/chatgpt-logo-free-download-chatgpt-logo-free-png_3817733a.webp',
+    availability: 'instant',
+    availabilityLabelAr: 'تفعيل فوري مضمون',
+    availabilityLabelFr: 'Activation immédiate garantie',
+    isFeatured: true,
+    isAvailable: true,
+    startingPriceTnd: 75,
+    plans: [
+      {
+        id: 'cg-1m',
+        nameAr: 'اشتراك شهر واحد (1 Mois)',
+        nameFr: 'Abonnement 1 Mois',
+        durationAr: '1 شهر',
+        durationFr: '1 Mois',
+        priceTnd: 75,
+        isPopular: false,
+        isAvailable: true,
+        featuresAr: ['تفعيل على حسابك الخاص أو حساب جديد', 'وصول كامل لـ GPT-4o و GPT-4', 'توليد الصور DALL-E 3', 'تحليل ملفات وبايثون المتقدم', 'دعم فني طيلة فترة الاشتراك'],
+        featuresFr: ['Sur votre compte personnel ou compte dédié', 'Accès prioritaire à GPT-4o', 'Génération d\'images DALL-E 3', 'Analyse de données et Python', 'Assistance continue']
+      },
+      {
+        id: 'cg-3m',
+        nameAr: 'اشتراك 3 أشهر (3 Mois)',
+        nameFr: 'Abonnement 3 Mois',
+        durationAr: '3 أشهر',
+        durationFr: '3 Mois',
+        priceTnd: 210,
+        isPopular: true,
+        isAvailable: true,
+        featuresAr: ['توفير خاص مقارنة بالشهر الفردي', 'تفعيل رسمي بدون انقطاع', 'ضمان استبدال فوري طيلة 90 يوماً', 'جميع ميزات ChatGPT Plus'],
+        featuresFr: ['Économisez par rapport au forfait mensuel', 'Activation officielle sans coupure', 'Garantie de remplacement 90 jours', 'Toutes les fonctionnalités Plus']
+      },
+      {
+        id: 'cg-12m',
+        nameAr: 'اشتراك سنة كاملة (1 An)',
+        nameFr: 'Abonnement 1 An',
+        durationAr: '12 شهراً',
+        durationFr: '1 An',
+        priceTnd: 780,
+        isPopular: false,
+        isAvailable: true,
+        featuresAr: ['أفضل سعر للاشتراك السنوي', 'استقرار كامل لعام كامل بدون قلق', 'أولوية قصوى في الدعم الفني'],
+        featuresFr: ['Meilleur tarif annuel pour pros & entreprises', 'Stabilité absolue sur 12 mois', 'Support prioritaire VIP']
+      }
+    ],
+    keyFeaturesAr: [
+      'نموذج الذكاء الاصطناعي الأقوى عالمياً GPT-4o',
+      'سرعة استجابة فائقة وأولوية في أوقات الذروة',
+      'ميزة Canvas لكتابة الأكواد والنصوص باحترافية',
+      'تحميل وتلخيص ملفات PDF والبيانات الإحصائية'
+    ],
+    keyFeaturesFr: [
+      'Accès exclusif à GPT-4o avec temps de réponse ultra rapide',
+      'Fonctionnalité Canvas pour le code et l\'écriture interactive',
+      'Téléchargement et analyse de fichiers PDF et Excel',
+      'Génération d\'illustrations HD via DALL-E 3'
+    ],
+    faqsAr: [
+      {
+        q: 'كيف يتم تفعيل اشتراك ChatGPT Plus في تونس؟',
+        a: 'بعد إرسال الطلب، يتواصل معك فريقنا عبر واتساب لتزويدك بطرق الدفع المحلية (D17, Flouci, تحويل بنكي). بعد تأكيد الدفع يتم تفعيل الحساب فوراً خلال أقل من 15 دقيقة.'
+      },
+      {
+        q: 'هل الاشتراك رسمي ومضمون؟',
+        a: 'نعم، جميع اشتراكاتنا رسمية ومغطاة بضمان كامل طيلة مدة الاشتراك.'
+      }
+    ],
+    faqsFr: [
+      {
+        q: 'Comment s\'effectue l\'activation de ChatGPT Plus en Tunisie ?',
+        a: 'Après votre demande, notre équipe vous contacte via WhatsApp pour le paiement (D17, Flouci, virement). L\'activation se fait en moins de 15 minutes.'
+      },
+      {
+        q: 'Est-ce un compte officiel avec garantie ?',
+        a: 'Oui, tous nos abonnements sont officiels avec garantie de fonctionnement pendant toute la durée souscrite.'
+      }
+    ]
+  },
+  {
+    id: 'prod-claude',
+    slug: 'claude-pro',
+    name: 'Claude Pro (Anthropic)',
+    categoryId: 'ai',
+    shortDescAr: 'النموذج الأفضل للبرمجة وكتابة النصوص مع Claude 3.5 Sonnet وميزة Artifacts',
+    shortDescFr: 'Le meilleur modèle pour le code et la rédaction avec Claude 3.5 Sonnet & Artifacts',
+    fullDescAr: 'اشتراك رسمي في Claude Pro من شركة Anthropic الرائدة. تمتع بحدود استخدام مضاعفة 5 مرات لنموذج Claude 3.5 Sonnet المشهور بدقته الفائقة في البرمجة وتطوير البرمجيات وكتابة المحتوى الطبيعي، مع ميزة Artifacts التفاعلية لتجربة الأكواد والتصاميم مباشرة.',
+    fullDescFr: 'Abonnement officiel à Claude Pro d\'Anthropic. Profitez d\'un volume d\'utilisation 5 fois plus élevé sur Claude 3.5 Sonnet, le modèle de référence pour la programmation, l\'analyse logique et la rédaction créative.',
+    brandColor: '#D97706',
+    iconName: 'Cpu',
+    logoUrl: '/assets/aistudio/claude-ai-logo-rounded-hd-free-png_41a2d1cf.webp',
+    availability: 'instant',
+    availabilityLabelAr: 'تفعيل فوري متاح',
+    availabilityLabelFr: 'Activation rapide disponible',
+    isFeatured: true,
+    isAvailable: true,
+    startingPriceTnd: 79,
+    plans: [
+      {
+        id: 'cl-1m',
+        nameAr: 'اشتراك شهر واحد (1 Mois)',
+        nameFr: 'Abonnement 1 Mois',
+        durationAr: '1 شهر',
+        durationFr: '1 Mois',
+        priceTnd: 79,
+        isPopular: true,
+        isAvailable: true,
+        featuresAr: ['5 أضعاف الاستخدام المعتاد على Claude 3.5 Sonnet', 'وصول كامل لميزة Artifacts التفاعلية', 'أولوية الاستخدام في أوقات الذروة', 'تفعيل مضمون وضمان كامل'],
+        featuresFr: ['Usage x5 sur Claude 3.5 Sonnet', 'Accès complet à la vue interactive Artifacts', 'Accès prioritaire en heures de pointe', 'Garantie totale']
+      },
+      {
+        id: 'cl-3m',
+        nameAr: 'اشتراك 3 أشهر (3 Mois)',
+        nameFr: 'Abonnement 3 Mois',
+        durationAr: '3 أشهر',
+        durationFr: '3 Mois',
+        priceTnd: 225,
+        isPopular: false,
+        isAvailable: true,
+        featuresAr: ['توفير ممتاز للمطورين والباحثين', 'استقرار كامل لمدة 90 يوماً', 'دعم فني سريع عبر واتساب'],
+        featuresFr: ['Tarif avantageux pour développeurs', '90 jours de sérénité sans interruption', 'Support technique dédié']
+      }
+    ],
+    keyFeaturesAr: [
+      'نموذج Claude 3.5 Sonnet الرائد في العالم البرمجي',
+      'نافذة سياق ضخمة 200,000 رمز لتحليل كتب وأكواد كاملة',
+      'واجهة Artifacts لمعاينة الأكواد وتطبيقات React مباشرة',
+      'كتابة نصوص أكاديمية وتسويقية بأسلوب بشري لا نظير له'
+    ],
+    keyFeaturesFr: [
+      'Modèle Claude 3.5 Sonnet champion des benchmarks de code',
+      'Contexte de 200 000 tokens pour livres et bases de code',
+      'Espace de travail interactif Artifacts',
+      'Rédaction fluide au style naturel'
+    ],
+    faqsAr: [
+      {
+        q: 'هل يمكنني استخدام Claude Pro من تونس بدون مشاكل؟',
+        a: 'نعم بكل تأكيد، نوفر لك حساباً مفعلاً وجاهزاً للاستخدام مباشرة في تونس مع إرشادات مبسطة.'
+      }
+    ],
+    faqsFr: [
+      {
+        q: 'Peut-on utiliser Claude Pro depuis la Tunisie sans difficulté ?',
+        a: 'Absolument, nous configurons un accès officiel prêt à l\'emploi avec toutes les indications requises.'
+      }
+    ]
+  },
+  {
+    id: 'prod-gemini',
+    slug: 'google-gemini-advanced',
+    name: 'Google Gemini Advanced',
+    categoryId: 'ai',
+    shortDescAr: 'نافذة سياق تصل إلى مليون رمز مع نموذج Gemini 1.5 Pro ومساحة 2TB Google One',
+    shortDescFr: 'Fenêtre de contexte jusqu\'à 1 million de tokens, Gemini 1.5 Pro et 2 To de stockage Google One',
+    fullDescAr: 'اشتراك Google One AI Premium الذي يجمع بين Gemini Advanced المزود بنموذج Gemini 1.5 Pro القادر على استيعاب ساعات من الفيديو ومئات الصفحات في أمر واحد، مع مساحة تخزين سحابية ضخمة 2 تيرابايت لجميع صورك وملفاتك على Google Drive.',
+    fullDescFr: 'Abonnement Google One AI Premium intégrant Gemini Advanced avec Gemini 1.5 Pro et 2 To de stockage cloud Google Drive, Google Photos et Gmail.',
+    brandColor: '#4285F4',
+    iconName: 'Layers',
+    logoUrl: '/assets/aistudio/gemini-new-logo-png_seeklogo-638161_1c8c1a51.png',
+    availability: 'instant',
+    availabilityLabelAr: 'تفعيل متاح',
+    availabilityLabelFr: 'Disponible immédiatement',
+    isFeatured: true,
+    isAvailable: true,
+    startingPriceTnd: 65,
+    plans: [
+      {
+        id: 'gm-1m',
+        nameAr: 'اشتراك شهر واحد (1 Mois)',
+        nameFr: 'Abonnement 1 Mois',
+        durationAr: '1 شهر',
+        durationFr: '1 Mois',
+        priceTnd: 65,
+        isPopular: false,
+        isAvailable: true,
+        featuresAr: ['نموذج Gemini 1.5 Pro الرائد', 'سعة استيعاب تصل لمليون رمز سياق', 'مساحة 2 تيرابايت Google Drive و Photos', 'دمج Gemini في Gmail و Google Docs'],
+        featuresFr: ['Gemini 1.5 Pro dernière génération', 'Fenêtre de contexte jusqu\'à 1M de tokens', '2 To de stockage cloud Google One', 'Intégration Gmail et Docs']
+      },
+      {
+        id: 'gm-3m',
+        nameAr: 'اشتراك 3 أشهر (3 Mois)',
+        nameFr: 'Abonnement 3 Mois',
+        durationAr: '3 أشهر',
+        durationFr: '3 Mois',
+        priceTnd: 180,
+        isPopular: true,
+        isAvailable: true,
+        featuresAr: ['سعر مخفض لـ 3 أشهر', 'تفعيل على حسابك الشخصي أو حساب منفصل', 'دعم فني وضمان متواصل'],
+        featuresFr: ['Remise trimestrielle', 'Activé sur votre compte personnel ou neuf', 'Garantie et support']
+      }
+    ],
+    keyFeaturesAr: [
+      'أكبر نافذة سياق لاستيعاب مستندات وفيديوهات طويلة',
+      'مساحة 2000 جيجابايت لتخزين ملفاتك وصورك',
+      'تكامل ذكي داخل مستندات Google Docs و Gmail'
+    ],
+    keyFeaturesFr: [
+      'Immense fenêtre de contexte pour fichiers volumineux',
+      'Stockage cloud géant de 2 To inclus',
+      'Intégration native dans Google Workspace'
+    ],
+    faqsAr: [
+      {
+        q: 'هل يشمل الاشتراك مساحة التخزين 2TB؟',
+        a: 'نعم، يشمل مساحة 2 تيرابايت على Google One صالحة طوال مدة اشتراكك.'
+      }
+    ],
+    faqsFr: [
+      {
+        q: 'L\'espace de stockage de 2 To est-il inclus ?',
+        a: 'Oui, les 2 To de stockage Google One sont pleinement inclus avec Gemini Advanced.'
+      }
+    ]
+  },
+  {
+    id: 'prod-canva',
+    slug: 'canva-pro',
+    name: 'Canva Pro',
+    categoryId: 'design',
+    shortDescAr: 'أدوات التصميم السحرية، إزالة الخلفيات بنقرة واحدة، وملايين القوالب الحصرية',
+    shortDescFr: 'Outils de design magiques, suppression d\'arrière-plan en un clic et millions de templates',
+    fullDescAr: 'اشتراك Canva Pro الاحترافي للتصميم الجرافيكي وصناعة المحتوى للسوشيال ميديا. احصل على إمكانية إزالة خلفيات الصور والفيديو بنقرة واحدة، تغيير حجم التصاميم لجميع المنصات، واستخدام ملايين الخطوط والصور والفيديوهات بدون قيود.',
+    fullDescFr: 'Abonnement Canva Pro complet pour créateurs, agences et entrepreneurs. Supprimez les arrière-plans, redimensionnez vos visuels pour tous les réseaux et accédez à plus de 100 millions de photos, vidéos et éléments graphiques premium.',
+    brandColor: '#00C4CC',
+    iconName: 'Palette',
+    logoUrl: '/assets/aistudio/canva-app-logo-on-a-transparent-background-free-png_89ef5199.webp',
+    availability: 'instant',
+    availabilityLabelAr: 'تفعيل رسمي على بريدك الخاص',
+    availabilityLabelFr: 'Activation officielle sur votre email',
+    isFeatured: true,
+    isAvailable: true,
+    startingPriceTnd: 29,
+    plans: [
+      {
+        id: 'cv-1m',
+        nameAr: 'اشتراك شهر واحد (1 Mois)',
+        nameFr: 'Abonnement 1 Mois',
+        durationAr: '1 شهر',
+        durationFr: '1 Mois',
+        priceTnd: 29,
+        isPopular: false,
+        isAvailable: true,
+        featuresAr: ['تفعيل مباشر على بريدك الإلكتروني الشخصي', 'أداة إزالة الخلفيات السحرية', 'وصول غير محدود لمكتبة القوالب والعناصر', 'تنزيل بتنسيق SVG وشفاف عالي الدقة'],
+        featuresFr: ['Activation sur votre adresse email personnelle', 'Effaceur d\'arrière-plan en 1 clic', 'Accès illimité aux templates et éléments Pro', 'Export SVG et fond transparent']
+      },
+      {
+        id: 'cv-12m',
+        nameAr: 'اشتراك سنة كاملة (1 An)',
+        nameFr: 'Abonnement 1 An',
+        durationAr: '12 شهراً',
+        durationFr: '1 An',
+        priceTnd: 85,
+        isPopular: true,
+        isAvailable: true,
+        featuresAr: ['توفير هائل لكامل العام', 'ضمان رسمي لمدة 365 يوماً', 'تفعيل على حسابك الحالي دون فقدان تصاميمك', 'مساحة تخزين سحابية 1TB'],
+        featuresFr: ['Économie maximale pour toute l\'année', 'Garantie officielle 365 jours', 'Vos designs existants sont conservés', '1 To de stockage cloud']
+      }
+    ],
+    keyFeaturesAr: [
+      'مكتبة تضم أكثر من 100 مليون صورة ورسم وفيديو احترافي',
+      'تغيير حجم التصميم السحري لمنصات فيسبوك وانستغرام وتيك توك',
+      'تصدير الفيديوهات والملفات بأعلى جودة وبخلفيات شفافة'
+    ],
+    keyFeaturesFr: [
+      'Plus de 100 millions de ressources premium libres de droits',
+      'Redimensionnement magique instantané pour tous formats',
+      'Outils IA Magic Studio intégrés'
+    ],
+    faqsAr: [
+      {
+        q: 'هل سأحتفظ بتصاميمي السابقة على حسابي؟',
+        a: 'نعم! يتم ترقية حسابك الشخصي الحالي إلى Pro دون أي تأثير على ملفاتك وتصاميمك السابقة.'
+      }
+    ],
+    faqsFr: [
+      {
+        q: 'Vais-je conserver mes designs existants ?',
+        a: 'Oui, l\'invitation Pro s\'applique directement sur votre compte personnel habituel.'
+      }
+    ]
+  },
+  {
+    id: 'prod-capcut',
+    slug: 'capcut-pro',
+    name: 'CapCut Pro',
+    categoryId: 'video',
+    shortDescAr: 'مونتاج احترافي للهواتف والكمبيوتر مع نصوص تلقائية وفلاتر ذكاء اصطناعي حصرية',
+    shortDescFr: 'Montage vidéo professionnel mobile & PC avec sous-titrage automatique et effets IA Pro',
+    fullDescAr: 'البرنامج المفضل لصناع المحتوى على تيك توك وإنستغرام ويوتيوب شورتس. يمنحك CapCut Pro ميزات توليد التسميات التوضيحية التلقائية بالذكاء الاصطناعي، إزالة الوميض، تحسين ملامح الوجه، وتأثيرات بصرية وانتقالات حصرية غير متاحة في النسخة المجانية.',
+    fullDescFr: 'L\'outil indispensable pour les Reels, TikTok et YouTube Shorts. CapCut Pro débloque les sous-titres automatiques multi-langues, la suppression de bruit, la stabilisation avancée et les effets IA exclusifs sur mobile et PC.',
+    brandColor: '#00F2FE',
+    iconName: 'Video',
+    logoUrl: '/assets/aistudio/images_0740e306.jpg',
+    availability: 'instant',
+    availabilityLabelAr: 'تفعيل فوري متوفر',
+    availabilityLabelFr: 'Activation rapide disponible',
+    isFeatured: true,
+    isAvailable: true,
+    startingPriceTnd: 35,
+    plans: [
+      {
+        id: 'cc-1m',
+        nameAr: 'اشتراك شهر واحد (1 Mois)',
+        nameFr: 'Abonnement 1 Mois',
+        durationAr: '1 شهر',
+        durationFr: '1 Mois',
+        priceTnd: 35,
+        isPopular: false,
+        isAvailable: true,
+        featuresAr: ['يعمل على الحاسوب (PC/Mac) والهاتف', 'تصدير فيديو بدقة 4K و 60 إطار', 'جميع فلاتر وتأثيرات Pro الحصرية', 'التسميات التوضيحية التلقائية المتقدمة'],
+        featuresFr: ['Compatible PC, Mac, iOS et Android', 'Export vidéo en 4K 60fps sans filigrane', 'Effets, transitions et filtres Pro débloqués', 'Sous-titres automatiques intelligents']
+      },
+      {
+        id: 'cc-12m',
+        nameAr: 'اشتراك سنة كاملة (1 An)',
+        nameFr: 'Abonnement 1 An',
+        durationAr: '12 شهراً',
+        durationFr: '1 An',
+        priceTnd: 140,
+        isPopular: true,
+        isAvailable: true,
+        featuresAr: ['توفير كبير لكامل السنة', 'تسجيل دخول شخصي خاص بك', 'تحديثات مستمرة لجميع ميزات الذكاء الاصطناعي', 'ضمان كامل طيلة 12 شهراً'],
+        featuresFr: ['Tarif le plus économique pour l\'année', 'Accès direct et personnel', 'Mises à jour des fonctionnalités IA', 'Garantie continue 12 mois']
+      }
+    ],
+    keyFeaturesAr: [
+      'توليد وتنسيق الكابشن والترجمة التلقائية باللغات المتعددة',
+      'إزالة الخلفيات بدقة عالية وتعديل الإضاءة الذاتي',
+      'تصدير فيديوهات نقية وعالية الجودة بدون أي علامة مائية'
+    ],
+    keyFeaturesFr: [
+      'Sous-titrage automatique haute précision',
+      'Amélioration intelligente de la voix et du visage',
+      'Exports 4K UHD sans filigrane'
+    ],
+    faqsAr: [
+      {
+        q: 'هل يعمل الحساب على الكمبيوتر وتطبيقات الموبايل معاً؟',
+        a: 'نعم، يمكنك تسجيل الدخول إلى نفس الحساب على الكمبيوتر (CapCut Desktop) وهاتفك الذكي.'
+      }
+    ],
+    faqsFr: [
+      {
+        q: 'Le compte fonctionne-t-il sur PC et smartphone ?',
+        a: 'Oui, l\'accès Pro se synchronise sur votre application mobile et sur votre ordinateur.'
+      }
+    ]
+  },
+  {
+    id: 'prod-netflix',
+    slug: 'netflix-premium',
+    name: 'Netflix Premium 4K',
+    categoryId: 'entertainment',
+    shortDescAr: 'بث فائق الجودة بتقنية 4K Ultra HD مع صوت مكاني بدون أي إعلانات',
+    shortDescFr: 'Streaming 4K Ultra HD avec audio spatial Dolby Atmos et sans coupure publicitaire',
+    fullDescAr: 'اشتراك نتفليكس بريميوم الأعلى جودة في تونس. استمتع بآلاف الأفلام والمسلسلات والإنتاجات الأصلية الحائزة على جوائز مع دقة 4K HDR وميزة الصوت المحيطي، مع ملف شخصي مخصص وبروفايل محمي برمز PIN.',
+    fullDescFr: 'Abonnement Netflix Premium pour profiter des séries et films en Ultra Haute Définition (4K HDR). Écran personnel sécurisé avec code PIN individuel, son spatial immersif et garantie de service continue.',
+    brandColor: '#E50914',
+    iconName: 'Film',
+    logoUrl: '/assets/aistudio/netflix-logo-square-rounded-netflix-logo-netflix-logo-free-download-free-png_2f1d7c44.webp',
+    availability: 'instant',
+    availabilityLabelAr: 'تفعيل فوري مع ضمان',
+    availabilityLabelFr: 'Activation immédiate garantie',
+    isFeatured: true,
+    isAvailable: true,
+    startingPriceTnd: 22,
+    plans: [
+      {
+        id: 'nf-1m',
+        nameAr: 'شاشة خاصة - شهر واحد (1 Mois)',
+        nameFr: 'Écran Privé - 1 Mois',
+        durationAr: '1 شهر',
+        durationFr: '1 Mois',
+        priceTnd: 22,
+        isPopular: false,
+        isAvailable: true,
+        featuresAr: ['شاشة خاصة بك مع رمز سري (PIN)', 'دقة 4K Ultra HD فائقة الوضوح', 'يعمل على التلفاز الذكي والهاتف والكمبيوتر', 'ضمان استبدال فوري طوال الشهر'],
+        featuresFr: ['Écran privé protégé par code PIN', 'Résolution maximale 4K Ultra HD', 'Compatible Smart TV, smartphone, PC/tablette', 'Garantie de remplacement immédiat']
+      },
+      {
+        id: 'nf-3m',
+        nameAr: 'شاشة خاصة - 3 أشهر (3 Mois)',
+        nameFr: 'Écran Privé - 3 Mois',
+        durationAr: '3 أشهر',
+        durationFr: '3 Mois',
+        priceTnd: 60,
+        isPopular: true,
+        isAvailable: true,
+        featuresAr: ['سعر مخفض لـ 3 أشهر متواصلة', 'شاشة خاصة محمية بـ PIN', 'ضمان كامل بدون انقطاع', 'دعم فني سريع عبر واتساب'],
+        featuresFr: ['Tarif réduit sur 3 mois complets', 'Écran sécurisé par PIN', 'Continuité de service sans coupure', 'Support réactif WhatsApp']
+      },
+      {
+        id: 'nf-account-1m',
+        nameAr: 'حساب كامل مستقل (Compte Complet 5 Écrans)',
+        nameFr: 'Compte Complet 5 Écrans (1 Mois)',
+        durationAr: '1 شهر',
+        durationFr: '1 Mois',
+        priceTnd: 65,
+        isPopular: false,
+        isAvailable: true,
+        featuresAr: ['حساب خاص بالعائلة بالكامل (5 شاشات)', 'تحكم كامل بكلمة المرور والملفات', 'مشاهدة على 4 أجهزة في نفس اللحظة', 'جودة 4K Ultra HD لجميع الشاشات'],
+        featuresFr: ['Compte privé complet pour toute la famille', 'Gestion totale des profils et mots de passe', 'Visionnage simultané sur 4 écrans', 'Qualité 4K HDR intégrale']
+      }
+    ],
+    keyFeaturesAr: [
+      'جودة عرض 4K HDR وصوت مكاني احترافي',
+      'يعمل على جميع أنواع الشاشات الذكية Smart TV وأجهزة TV Box',
+      'بدون إعلانات ومتابعة غير محدودة'
+    ],
+    keyFeaturesFr: [
+      'Qualité 4K Ultra HD et audio spatial',
+      'Fonctionne sur toutes les Smart TV, TV Box et mobiles',
+      'Sans aucune coupure publicitaire'
+    ],
+    faqsAr: [
+      {
+        q: 'هل تعمل الشاشة على التلفاز الذكي في تونس؟',
+        a: 'نعم! اشتراكاتنا تعمل بسلاسة على التلفاز الذكي، أجهزة TV Box، الهواتف الذكية وأجهزة الحاسوب.'
+      }
+    ],
+    faqsFr: [
+      {
+        q: 'Est-ce compatible avec les Smart TV en Tunisie ?',
+        a: 'Oui, nos comptes fonctionnent parfaitement sur Smart TV, boîtiers TV, smartphones et ordinateurs.'
+      }
+    ]
+  }
+];
+
+export const DEFAULT_SETTINGS: StoreSettings = {
+  storeNameAr: 'Mr Smart Shop AI',
+  storeNameFr: 'Mr Smart Shop AI',
+  whatsappNumber: '+216 56 170 467',
+  contactPhone: '+216 56 170 467',
+  contactEmail: 'contact@mrsmartshop.tn',
+  currency: 'د.ت / TND',
+  announcementAr: '🚀 اشتراكات رقمية رسمية ومضمونة في تونس - دفع سهل عبر D17، Flouci والتحويل البنكي مع تفعيل سريع عبر واتساب!',
+  announcementFr: '🚀 Abonnements numériques officiels et garantis en Tunisie - Paiement D17, Flouci ou Virement avec activation WhatsApp !',
+  facebookUrl: 'https://facebook.com/mrsmartshop.ai',
+  instagramUrl: 'https://instagram.com/mrsmartshop.ai',
+  tiktokUrl: 'https://tiktok.com/@mrsmartshop.ai'
+};

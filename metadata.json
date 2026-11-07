@@ -1,0 +1,6 @@
+{
+  "name": "Mister Smart Shop AI",
+  "description": "Premium Digital Subscriptions Marketplace in Tunisia - AI tools, streaming, design, and productivity subscriptions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
